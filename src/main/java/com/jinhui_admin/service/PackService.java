@@ -1,6 +1,7 @@
 package com.jinhui_admin.service;
 
 import com.jinhui.po.Pack;
+import com.jinhui.vo.EUDataGridResult;
 import com.jinhui.vo.Result;
 
 /**
@@ -8,4 +9,5 @@ import com.jinhui.vo.Result;
  */
 public interface PackService {
     public Result addPack(Pack pack);
+    public EUDataGridResult findALlPack(int page,int rows);
 }
