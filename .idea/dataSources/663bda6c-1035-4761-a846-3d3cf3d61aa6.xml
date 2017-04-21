@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="graduate_design@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="graduate_design">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="boke"/>
+    <schema id="4" parent="1" name="bole"/>
+    <schema id="5" parent="1" name="bookstore"/>
+    <schema id="6" parent="1" name="information_schema"/>
+    <schema id="7" parent="1" name="lg"/>
+    <schema id="8" parent="1" name="mybatis"/>
+    <schema id="9" parent="1" name="mydb"/>
+    <schema id="10" parent="1" name="mysql"/>
+    <schema id="11" parent="1" name="performance_schema"/>
+    <schema id="12" parent="1" name="ssh-test"/>
+    <schema id="13" parent="1" name="taotao"/>
+    <schema id="14" parent="1" name="test"/>
+    <schema id="15" parent="1" name="weibo"/>
+    <table id="16" parent="2" name="pack"/>
+    <table id="17" parent="2" name="record"/>
+    <table id="18" parent="2" name="summary"/>
+    <table id="19" parent="2" name="user"/>
+    <table id="20" parent="2" name="userpackage"/>
+    <column id="21" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="22" parent="16" name="conversation">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="23" parent="16" name="message">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="24" parent="16" name="date_traffic">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="25" parent="16" name="unit_conversation">
+      <Position>5</Position>
+      <DataType>float(22,11)|0</DataType>
+    </column>
+    <column id="26" parent="16" name="unit_message">
+      <Position>6</Position>
+      <DataType>float(22,11)|0</DataType>
+    </column>
+    <column id="27" parent="16" name="unit_date_traffic">
+      <Position>7</Position>
+      <DataType>float(22,11)|0</DataType>
+    </column>
+    <key id="28" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="30" parent="17" name="user_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="17" name="type">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="17" name="sum_time">
+      <Position>4</Position>
+      <DataType>float(22,11)|0</DataType>
+    </column>
+    <column id="33" parent="17" name="time">
+      <Position>5</Position>
+      <DataType>time|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="34" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="35" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="36" parent="18" name="user_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="18" name="conversation">
+      <Position>3</Position>
+      <DataType>float(22,11)|0</DataType>
+    </column>
+    <column id="38" parent="18" name="message">
+      <Position>4</Position>
+      <DataType>float(22,11)|0</DataType>
+    </column>
+    <column id="39" parent="18" name="data_traffic">
+      <Position>5</Position>
+      <DataType>float(22,11)|0</DataType>
+    </column>
+    <column id="40" parent="18" name="conversation_price">
+      <Position>6</Position>
+      <DataType>float(22,11)|0</DataType>
+    </column>
+    <column id="41" parent="18" name="message_price">
+      <Position>7</Position>
+      <DataType>float(22,11)|0</DataType>
+    </column>
+    <column id="42" parent="18" name="data_traffic_price">
+      <Position>8</Position>
+      <DataType>float(22,11)|0</DataType>
+    </column>
+    <column id="43" parent="18" name="start_time">
+      <Position>9</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="44" parent="18" name="end_time">
+      <Position>10</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <key id="45" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="46" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="47" parent="19" name="phoneNum">
+      <Position>2</Position>
+      <DataType>varchar(25)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="19" name="name">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="19" name="password">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="19" name="adress">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="51" parent="19" name="id_card">
+      <Position>6</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="52" parent="19" name="state">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="53" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="54" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="55" parent="20" name="user_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="20" name="package_id">
+      <Position>3</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="57" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

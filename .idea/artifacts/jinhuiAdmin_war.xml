@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jinhuiAdmin:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="jinhuiAdmin.war">
+      <element id="artifact" artifact-name="jinhuiAdmin:war exploded" />
+    </root>
+  </artifact>
+</component>

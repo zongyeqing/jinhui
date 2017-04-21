@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.mapper.PackMapper" >
+  <resultMap id="BaseResultMap" type="com.jinhui.po.Pack" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="conversation" property="conversation" jdbcType="INTEGER" />
+    <result column="message" property="message" jdbcType="INTEGER" />
+    <result column="date_traffic" property="dateTraffic" jdbcType="INTEGER" />
+    <result column="unit_conversation" property="unitConversation" jdbcType="REAL" />
+    <result column="unit_message" property="unitMessage" jdbcType="REAL" />
+    <result column="unit_date_traffic" property="unitDateTraffic" jdbcType="REAL" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="REAL" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, conversation, message, date_traffic, unit_conversation, unit_message, unit_date_traffic, 
+    description, title, type, price, picture
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jinhui.po.PackExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pack
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from pack
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from pack
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jinhui.po.PackExample" >
+    delete from pack
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jinhui.po.Pack" >
+    insert into pack (id, conversation, message, 
+      date_traffic, unit_conversation, unit_message, 
+      unit_date_traffic, description, title, 
+      type, price, picture)
+    values (#{id,jdbcType=BIGINT}, #{conversation,jdbcType=INTEGER}, #{message,jdbcType=INTEGER}, 
+      #{dateTraffic,jdbcType=INTEGER}, #{unitConversation,jdbcType=REAL}, #{unitMessage,jdbcType=REAL}, 
+      #{unitDateTraffic,jdbcType=REAL}, #{description,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, #{picture,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jinhui.po.Pack" >
+    insert into pack
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="conversation != null" >
+        conversation,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="dateTraffic != null" >
+        date_traffic,
+      </if>
+      <if test="unitConversation != null" >
+        unit_conversation,
+      </if>
+      <if test="unitMessage != null" >
+        unit_message,
+      </if>
+      <if test="unitDateTraffic != null" >
+        unit_date_traffic,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="conversation != null" >
+        #{conversation,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=INTEGER},
+      </if>
+      <if test="dateTraffic != null" >
+        #{dateTraffic,jdbcType=INTEGER},
+      </if>
+      <if test="unitConversation != null" >
+        #{unitConversation,jdbcType=REAL},
+      </if>
+      <if test="unitMessage != null" >
+        #{unitMessage,jdbcType=REAL},
+      </if>
+      <if test="unitDateTraffic != null" >
+        #{unitDateTraffic,jdbcType=REAL},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jinhui.po.PackExample" resultType="java.lang.Integer" >
+    select count(*) from pack
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update pack
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.conversation != null" >
+        conversation = #{record.conversation,jdbcType=INTEGER},
+      </if>
+      <if test="record.message != null" >
+        message = #{record.message,jdbcType=INTEGER},
+      </if>
+      <if test="record.dateTraffic != null" >
+        date_traffic = #{record.dateTraffic,jdbcType=INTEGER},
+      </if>
+      <if test="record.unitConversation != null" >
+        unit_conversation = #{record.unitConversation,jdbcType=REAL},
+      </if>
+      <if test="record.unitMessage != null" >
+        unit_message = #{record.unitMessage,jdbcType=REAL},
+      </if>
+      <if test="record.unitDateTraffic != null" >
+        unit_date_traffic = #{record.unitDateTraffic,jdbcType=REAL},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=REAL},
+      </if>
+      <if test="record.picture != null" >
+        picture = #{record.picture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update pack
+    set id = #{record.id,jdbcType=BIGINT},
+      conversation = #{record.conversation,jdbcType=INTEGER},
+      message = #{record.message,jdbcType=INTEGER},
+      date_traffic = #{record.dateTraffic,jdbcType=INTEGER},
+      unit_conversation = #{record.unitConversation,jdbcType=REAL},
+      unit_message = #{record.unitMessage,jdbcType=REAL},
+      unit_date_traffic = #{record.unitDateTraffic,jdbcType=REAL},
+      description = #{record.description,jdbcType=VARCHAR},
+      title = #{record.title,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=REAL},
+      picture = #{record.picture,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jinhui.po.Pack" >
+    update pack
+    <set >
+      <if test="conversation != null" >
+        conversation = #{conversation,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=INTEGER},
+      </if>
+      <if test="dateTraffic != null" >
+        date_traffic = #{dateTraffic,jdbcType=INTEGER},
+      </if>
+      <if test="unitConversation != null" >
+        unit_conversation = #{unitConversation,jdbcType=REAL},
+      </if>
+      <if test="unitMessage != null" >
+        unit_message = #{unitMessage,jdbcType=REAL},
+      </if>
+      <if test="unitDateTraffic != null" >
+        unit_date_traffic = #{unitDateTraffic,jdbcType=REAL},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=REAL},
+      </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jinhui.po.Pack" >
+    update pack
+    set conversation = #{conversation,jdbcType=INTEGER},
+      message = #{message,jdbcType=INTEGER},
+      date_traffic = #{dateTraffic,jdbcType=INTEGER},
+      unit_conversation = #{unitConversation,jdbcType=REAL},
+      unit_message = #{unitMessage,jdbcType=REAL},
+      unit_date_traffic = #{unitDateTraffic,jdbcType=REAL},
+      description = #{description,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL},
+      picture = #{picture,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

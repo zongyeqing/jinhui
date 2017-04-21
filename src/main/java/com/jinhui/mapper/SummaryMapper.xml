@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jinhui.mapper.SummaryMapper" >
+  <resultMap id="BaseResultMap" type="com.jinhui.po.Summary" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="conversation" property="conversation" jdbcType="REAL" />
+    <result column="message" property="message" jdbcType="REAL" />
+    <result column="data_traffic" property="dataTraffic" jdbcType="REAL" />
+    <result column="conversation_price" property="conversationPrice" jdbcType="REAL" />
+    <result column="message_price" property="messagePrice" jdbcType="REAL" />
+    <result column="data_traffic_price" property="dataTrafficPrice" jdbcType="REAL" />
+    <result column="start_time" property="startTime" jdbcType="DATE" />
+    <result column="end_time" property="endTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_id, conversation, message, data_traffic, conversation_price, message_price, 
+    data_traffic_price, start_time, end_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jinhui.po.SummaryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from summary
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from summary
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from summary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jinhui.po.SummaryExample" >
+    delete from summary
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jinhui.po.Summary" >
+    insert into summary (id, user_id, conversation, 
+      message, data_traffic, conversation_price, 
+      message_price, data_traffic_price, start_time, 
+      end_time)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{conversation,jdbcType=REAL}, 
+      #{message,jdbcType=REAL}, #{dataTraffic,jdbcType=REAL}, #{conversationPrice,jdbcType=REAL}, 
+      #{messagePrice,jdbcType=REAL}, #{dataTrafficPrice,jdbcType=REAL}, #{startTime,jdbcType=DATE}, 
+      #{endTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jinhui.po.Summary" >
+    insert into summary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="conversation != null" >
+        conversation,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="dataTraffic != null" >
+        data_traffic,
+      </if>
+      <if test="conversationPrice != null" >
+        conversation_price,
+      </if>
+      <if test="messagePrice != null" >
+        message_price,
+      </if>
+      <if test="dataTrafficPrice != null" >
+        data_traffic_price,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="conversation != null" >
+        #{conversation,jdbcType=REAL},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=REAL},
+      </if>
+      <if test="dataTraffic != null" >
+        #{dataTraffic,jdbcType=REAL},
+      </if>
+      <if test="conversationPrice != null" >
+        #{conversationPrice,jdbcType=REAL},
+      </if>
+      <if test="messagePrice != null" >
+        #{messagePrice,jdbcType=REAL},
+      </if>
+      <if test="dataTrafficPrice != null" >
+        #{dataTrafficPrice,jdbcType=REAL},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jinhui.po.SummaryExample" resultType="java.lang.Integer" >
+    select count(*) from summary
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update summary
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.conversation != null" >
+        conversation = #{record.conversation,jdbcType=REAL},
+      </if>
+      <if test="record.message != null" >
+        message = #{record.message,jdbcType=REAL},
+      </if>
+      <if test="record.dataTraffic != null" >
+        data_traffic = #{record.dataTraffic,jdbcType=REAL},
+      </if>
+      <if test="record.conversationPrice != null" >
+        conversation_price = #{record.conversationPrice,jdbcType=REAL},
+      </if>
+      <if test="record.messagePrice != null" >
+        message_price = #{record.messagePrice,jdbcType=REAL},
+      </if>
+      <if test="record.dataTrafficPrice != null" >
+        data_traffic_price = #{record.dataTrafficPrice,jdbcType=REAL},
+      </if>
+      <if test="record.startTime != null" >
+        start_time = #{record.startTime,jdbcType=DATE},
+      </if>
+      <if test="record.endTime != null" >
+        end_time = #{record.endTime,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update summary
+    set id = #{record.id,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      conversation = #{record.conversation,jdbcType=REAL},
+      message = #{record.message,jdbcType=REAL},
+      data_traffic = #{record.dataTraffic,jdbcType=REAL},
+      conversation_price = #{record.conversationPrice,jdbcType=REAL},
+      message_price = #{record.messagePrice,jdbcType=REAL},
+      data_traffic_price = #{record.dataTrafficPrice,jdbcType=REAL},
+      start_time = #{record.startTime,jdbcType=DATE},
+      end_time = #{record.endTime,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jinhui.po.Summary" >
+    update summary
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="conversation != null" >
+        conversation = #{conversation,jdbcType=REAL},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=REAL},
+      </if>
+      <if test="dataTraffic != null" >
+        data_traffic = #{dataTraffic,jdbcType=REAL},
+      </if>
+      <if test="conversationPrice != null" >
+        conversation_price = #{conversationPrice,jdbcType=REAL},
+      </if>
+      <if test="messagePrice != null" >
+        message_price = #{messagePrice,jdbcType=REAL},
+      </if>
+      <if test="dataTrafficPrice != null" >
+        data_traffic_price = #{dataTrafficPrice,jdbcType=REAL},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jinhui.po.Summary" >
+    update summary
+    set user_id = #{userId,jdbcType=BIGINT},
+      conversation = #{conversation,jdbcType=REAL},
+      message = #{message,jdbcType=REAL},
+      data_traffic = #{dataTraffic,jdbcType=REAL},
+      conversation_price = #{conversationPrice,jdbcType=REAL},
+      message_price = #{messagePrice,jdbcType=REAL},
+      data_traffic_price = #{dataTrafficPrice,jdbcType=REAL},
+      start_time = #{startTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
