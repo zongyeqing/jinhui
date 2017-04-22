@@ -26,16 +26,22 @@
          		<ul>
 	         		<li data-options="attributes:{'url':'pack-add'}">新增套餐</li>
 	         		<li data-options="attributes:{'url':'pack-list'}">查询套餐</li>
-	         		<li data-options="attributes:{'url':'item-param-list'}">规格参数</li>
 	         	</ul>
          	</li>
          	<li>
-         		<span>网站内容管理</span>
+         		<span>话费查询</span>
          		<ul>
-	         		<li data-options="attributes:{'url':'content-category'}">内容分类管理</li>
-	         		<li data-options="attributes:{'url':'content'}">内容管理</li>
+	         		<li data-options="attributes:{'url':'fare-summary'}">月记录查询</li>
+	         		<li data-options="attributes:{'url':'fare-query'}">个人话费查询</li>
 	         	</ul>
          	</li>
+			<li>
+				<span>业务办理</span>
+				<ul>
+					<li data-options="attributes:{'url':'user-pack'}">个人套餐管理</li>
+					<li data-options="attributes:{'url':'user-recharge'}">话费充值</li>
+				</ul>
+			</li>
          </ul>
     </div>
     <div data-options="region:'center',title:''">
